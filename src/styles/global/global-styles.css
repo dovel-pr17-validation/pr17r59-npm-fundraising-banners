@@ -1,0 +1,57 @@
+.wmde-banner {
+	margin: 0;
+	padding: 0;
+	font-family: var( --font-base );
+	font-size: var( --type-step-0 );
+	line-height: var( --leading-standard );
+	color: var( --banner-color );
+	font-size-adjust: from-font;
+	font-synthesis: none;
+	background: var( --banner-background );
+	box-shadow: var( --banner-shadow );
+
+	/* stylelint-disable */
+	-webkit-font-smoothing: antialiased;
+	-moz-osx-font-smoothing: grayscale;
+	/* stylelint-enable */
+}
+
+.wmde-banner * {
+	outline-color: var( --color-outline );
+}
+
+.wmde-banner h2 {
+	font-size: var( --type-step-2 );
+	font-weight: var( --font-bold );
+}
+
+.wmde-banner small {
+	font-size: var( --type-step-00 );
+}
+
+.wmde-banner hr {
+	margin-block: var( --space-3xs );
+	background-color: var( --color-grey-100 );
+}
+
+.wmde-banner fieldset {
+	border: unset;
+	margin: unset;
+	padding: unset;
+}
+
+.wmde-banner button {
+	cursor: pointer;
+}
+
+.wmde-banner input {
+	font-family: var( --font-base );
+}
+
+.wmde-banner [ type='text' ] {
+	width: 100%;
+}
+
+.wmde-banner label:has( [ type='checkbox' ], [ type='radio' ] ):hover {
+	cursor: pointer;
+}

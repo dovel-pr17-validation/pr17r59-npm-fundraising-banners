@@ -1,0 +1,10 @@
+.env
+.eslintcache
+.idea/
+*.patch
+npm-debug.log
+node_modules/
+dist/
+!dist/index.html
+coverage
+vitest.campaign.config.mjs.timestamp*

@@ -1,0 +1,28 @@
+name: BC check for all banners on "Ready for review" label
+#Check backwards compatibility for all Banners whenever "Ready for review" label is added to a pull request
+on:
+  pull_request:
+    types: [ labeled ]
+
+jobs:
+  bc-check:
+    if: ${{ github.event.label.name == 'Ready for review' }}
+    runs-on: ubuntu-latest
+
+    strategy:
+      matrix:
+        node-version: [22.x]
+        # See supported Node.js release schedule at https://nodejs.org/en/about/releases/
+        # Node version should be in sync with the version in the package.json and build.yml
+
+    steps:
+    - uses: actions/checkout@v7
+    - name: Use Node.js ${{ matrix.node-version }}
+      uses: actions/setup-node@v7
+      with:
+        node-version: ${{ matrix.node-version }}
+        cache: 'npm'
+    # Install packages, exact versions from package-lock.json
+    - run: npm ci
+    # Run test case that runs unit tests for all banners
+    - run: npm run test:all-banners

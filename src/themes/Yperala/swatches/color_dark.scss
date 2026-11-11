@@ -1,0 +1,155 @@
+$red100: #dbb0ad;
+$red400: #e60f00;
+$red500: #b70d00;
+$red-transparent100: rgb( 219, 176, 173, 0.3 );
+
+$blue10: #f8f9fa; /* offwhite */
+
+$green400: #6e9e00;
+$green500: #598000;
+
+$error: #ff5252;
+$link: #88a3e8;
+
+$white: #ffffff;
+$black: #000000;
+$grey100: #e0e5e9;
+$grey150: #d9d9d9;
+$grey400: #9f9f9f;
+$grey450: #808080;
+$grey600: #434343;
+$grey700: #333333;
+$grey800: #222222;
+
+$blue-grey400: #7d8389;
+
+$orange600: #da9000;
+$orange700: #b47200;
+
+@mixin swatch(
+	$progress-bar: false,
+	$select-group-image-label: false,
+	$soft-close: false,
+	$upgrade-to-yearly: false
+) {
+	--main-color: #{$grey150};
+	--color-error: #{$error};
+	--color-link: #{$link};
+
+	--headline-line: #{$grey400};
+	--headline-background: #{$grey800};
+	--headline-color: #{$grey400};
+
+	--close-circle-background-fill: #{$red400};
+	--close-circle-x-fill: #{$white};
+
+	--mini-background: #{$grey800};
+	--mini-border: #{$red400};
+	--mini-box-shadow: none;
+
+	--mini-button-color: #{$white};
+	--mini-button-background: #{$orange600};
+	--mini-button-background-hover: #{$orange700};
+	--mini-button-alt-background: #{$green400};
+	--mini-button-alt-background-hover: #{$green500};
+
+	--slider-pagination-background: #{$grey800};
+	--slider-pagination-border: #{$grey150};
+	--slider-pagination-background-active: #{$red400};
+	--slider-pagination-border-active: #{$red400};
+	--slider-chevron: #{$grey150};
+
+	--full-background: #{$grey800};
+	--full-border: #{$red400};
+	--full-box-shadow: none;
+
+	--full-close-background: #{$grey800};
+
+	--animated-highlight-color: #{$grey150};
+	/* stylelint-disable */
+	--animated-highlight-gradient: linear-gradient(
+			270deg,
+			rgba( 255, 255, 255, 0 ) 0%,
+			rgba( 255, 255, 255, 0 ) 50%,
+			rgba( 42, 75, 141 ) 50%,
+			rgba( 42, 75, 141 ) 100%
+	);
+	/* stylelint-enable */
+
+	--field-group-border: #{$grey700};
+	--donation-form-button-color: #{$white};
+	--donation-form-button-background: #{$green400};
+	--donation-form-button-background-hover: #{$green500};
+
+	--select-group-option-background: #{$grey600};
+	--select-group-option-color: #{$grey150};
+	--select-group-option-color-disabled: #{$grey150};
+
+	--select-group-option-background-active: #{$red400};
+	--select-group-option-color-active: #{$white};
+
+	--custom-amount-currency-color: #{$white};
+
+	--footer-usage-link-color: #{$grey450};
+	--selection-input-color: #{$black};
+	--selection-input-selection-color: #{$white};
+	--selection-input-selection-background: #{$red400};
+
+	@if $progress-bar {
+		--progress-bar-border: #{$red400};
+		--progress-bar-background: #{$grey800};
+		--progress-bar-fill-background: #{$red400};
+		--progress-bar-color: #{$white};
+	}
+
+	/**
+	These colours are not part of our design system, but are based on the payment service's branding.
+	The hex codes are inlined so as not to confuse/mix these colours with our own. They're currently
+	all set to white, as on dark mode it's easier to see them that way and the white hex code is used
+	to keep it consistent with the light colour swatch.
+	 */
+	@if $select-group-image-label {
+		--paypal-primary-fill: #ffffff;
+		--paypal-secondary-fill: #ffffff;
+		--paypal-overlap-fill: transparent;
+		--paypal-primary-fill-active: #ffffff;
+		--paypal-secondary-fill-active: #ffffff;
+		--paypal-overlap-fill-active: transparent;
+
+		--visa-fill: #ffffff;
+		--visa-fill-active: #ffffff;
+
+		--mastercard-primary-fill: #ffffff;
+		--mastercard-secondary-fill: #ffffff;
+		--mastercard-overlap-fill: transparent;
+		--mastercard-text-fill: #ffffff;
+		--mastercard-primary-fill-active: #ffffff;
+		--mastercard-secondary-fill-active: #ffffff;
+		--mastercard-overlap-fill-active: transparent;
+		--mastercard-text-fill-active: #ffffff;
+
+		--sepa-primary-fill: #ffffff;
+		--sepa-secondary-fill: #ffffff;
+		--sepa-primary-fill-active: #ffffff;
+		--sepa-secondary-fill-active: #ffffff;
+
+		--bank-transfer-fill: #ffffff;
+		--bank-transfer-fill-active: #ffffff;
+	}
+
+	@if $soft-close {
+		--soft-close-background: #{$grey800};
+		--soft-close-box-shadow: none;
+
+		--soft-close-button-background: #{$red400};
+		--soft-close-button-color: #{$white};
+		--soft-close-button-background-hover: #{$red500};
+
+		--soft-close-countdown-fill: #{$red400};
+	}
+
+	@if $upgrade-to-yearly {
+		--upgrade-to-yearly-link-color: #{$red400};
+		--upgrade-to-yearly-back-color: #{$white};
+	}
+}

@@ -1,0 +1,23 @@
+{
+	"compilerOptions": {
+		"target": "es6",
+		"skipLibCheck": true,
+		"outDir": "./dist/",
+		"noImplicitAny": true,
+		"baseUrl": ".",
+		"resolveJsonModule": true,
+		"moduleResolution": "node",
+		"paths": {
+			"@banners/*": [ "banners/*" ],
+			"@src/*": [ "src/*" ],
+			"@test/*": [ "test/*" ],
+			"@environment/*": [ "src/environment/prod/*", "src/environment/dev/*" ]
+		},
+		"lib": [
+			"dom",
+			"dom.iterable",
+			"es6",
+			"scripthost",
+		]
+	}
+}

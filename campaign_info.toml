@@ -1,0 +1,258 @@
+# NOTE: The "pagename" value must start with an uppercase "B" and should be followed by the year (YY) and WMDE.
+# Example: "B18WMDE_"
+# See https://github.com/wmde/fundraising-infrastructure/wiki/How-to-manage-banners-on-de.wikipedia.org
+
+# A Campaign with global settings
+[desktop]
+name = "Desktop"
+icon = "desktop"
+campaign = "WMDE_FR_2026_Desktop_DE_07"
+description = "Based on CTRL of desktop-de-06, VAR has a soft close."
+campaign_tracking = "07-ba-261026"
+preview_link = "/wiki/Wikipedia:Hauptseite?devbanner={{banner}}&banner=B26_WMDE_local_prototype"
+preview_link_darkmode = "/wiki/Wikipedia:Hauptseite?devbanner={{banner}}&banner=B26_WMDE_local_prototype&vectornightmode=1"
+preview_link_offline = ""
+preview_url = 'https://de.wikipedia.org/wiki/Hamster?banner={{banner}}&devMode'
+preview_url_darkmode = 'https://de.wikipedia.org/wiki/Hamster?banner={{banner}}&devMode&vectornightmode=1'
+wrapper_template = "wikipedia_org"
+use_of_funds_source = "MediaWiki:WMDE_Fundraising/UseOfFunds_2026_DE"
+
+# Banners of the campaign, key after "banners" can be anything
+[desktop.banners.ctrl]
+filename = "./banners/desktop/WMDE_FR_2026_Desktop_DE_07/banner_ctrl.ts"
+pagename = "WMDE_FR_2026_Desktop_DE_07_ctrl"
+tracking = "org-07-261026-ctrl"
+
+[desktop.banners.var]
+filename = "./banners/desktop/WMDE_FR_2026_Desktop_DE_07/banner_var.ts"
+pagename = "WMDE_FR_2026_Desktop_DE_07_var"
+tracking = "org-07-261026-var"
+
+[desktop.test_matrix]
+platform = ["edge", "firefox_windows", "chrome_windows", "firefox_linux", "chrome_linux", "chrome_macos", "firefox_macos", "safari" ]
+resolution = ["800x600", "1280x720", "1536x864", "1920x1080", "2560x1440"]
+
+
+[mobile]
+name = "Mobile"
+icon = "mobile"
+campaign = "WMDE_FR_2026_Mobile_DE_06"
+description = "Basen on CTRL of #5, VAR: new transactional copy in the modal above the donation form"
+campaign_tracking = "mob-de-06-ba-261012"
+preview_link = "/wiki/Wikipedia:Hauptseite?devbanner={{banner}}&banner=B26_WMDE_local_prototype&useskin=minerva"
+preview_link_darkmode = "/wiki/Wikipedia:Hauptseite?devbanner={{banner}}&banner=B26_WMDE_local_prototype&useskin=minerva&minervanightmode=1"
+preview_link_offline = ""
+preview_url = 'https://de.m.wikipedia.org/wiki/Wikipedia:Hauptseite?banner={{banner}}&useskin=minerva&devMode'
+preview_url_darkmode = 'https://de.m.wikipedia.org/wiki/Wikipedia:Hauptseite?banner={{banner}}&useskin=minerva&devMode&minervanightmode=1'
+wrapper_template = "wikipedia_org"
+use_of_funds_source = "MediaWiki:WMDE_Fundraising/UseOfFunds_2026_DE"
+
+[mobile.banners.ctrl]
+filename = "./banners/mobile/WMDE_FR_2026_Mobile_DE_06/banner_ctrl.ts"
+pagename = "WMDE_FR_2026_Mobile_DE_06_ctrl"
+tracking = "org-mob06-261012-ctrl"
+
+[mobile.banners.var]
+filename = "./banners/mobile/WMDE_FR_2026_Mobile_DE_06/banner_var.ts"
+pagename = "WMDE_FR_2026_Mobile_DE_06_var"
+tracking = "org-mob06-261012-var"
+
+[mobile.test_matrix]
+device = [ "android_old_chrome", "android_new_chrome", "iphone_old", "iphone_small", "iphone_new" ]
+orientation = [ "portrait", "landscape"]
+
+
+[pad]
+name = "iPad"
+icon = "pad"
+campaign = "WMDE_FR_2026_ipad_DE_01"
+description = "Based on CTRL of C25_WMDE_iPad_00"
+campaign_tracking = "pad01-ba-261026"
+preview_link = "/wiki/Wikipedia:Hauptseite?devbanner={{banner}}&banner=B26_WMDE_local_prototype"
+preview_link_darkmode = "/wiki/Wikipedia:Hauptseite?devbanner={{banner}}&banner=B26_WMDE_local_prototype&vectornightmode=1"
+preview_link_offline = ""
+preview_url = 'https://de.wikipedia.org/wiki/Wikipedia:Hauptseite?banner={{banner}}&devMode'
+preview_url_darkmode = 'https://de.wikipedia.org/wiki/Wikipedia:Hauptseite?banner={{banner}}&devMode&vectornightmode=1'
+wrapper_template = "wikipedia_org"
+use_of_funds_source = "MediaWiki:WMDE_Fundraising/UseOfFunds_2026_DE"
+
+[pad.banners.ctrl]
+filename = "./banners/pad/WMDE_FR_2026_ipad_DE_01/banner_ctrl.ts"
+pagename = "WMDE_FR_2026_ipad_DE_01_ctrl"
+tracking = "org-pad01-261026-ctrl"
+
+[pad.banners.var]
+filename = "./banners/pad/WMDE_FR_2026_ipad_DE_01/banner_var.ts"
+pagename = "WMDE_FR_2026_ipad_DE_01_var"
+tracking = "org-pad01-261026-var"
+
+[pad.test_matrix]
+device = [ 'ipad_mini', 'ipad_medium', 'ipad_big' ]
+orientation = [ "portrait", "landscape"]
+
+
+
+[wpde_desktop]
+name = "WPDE Desktop"
+icon = "desktop"
+campaign = "WPDE_FR_2026_Desktop_01"
+description = "Based on the CTRL of WPDE_FR_2026_Desktop_00, VAR has higher amounts"
+campaign_tracking = "wpde-01-261026"
+preview_link = "/wikipedia.de?devbanner={{banner}}&banner=dev-mode-wpde"
+preview_link_darkmode = "/wikipedia.de?devbanner={{banner}}&banner=dev-mode-wpde"
+preview_link_offline = "/wpde-offline?devbanner={{banner}}"
+wrapper_template = "wikipedia_de"
+wrap_in_wikitext = false
+preview_url = 'https://www.wikipedia.de/?banner={{banner}}'
+
+[wpde_desktop.banners.ctrl]
+filename = "./banners/wpde_desktop/WPDE_FR_2026_Desktop_01/banner_ctrl.ts"
+pagename = "WPDE_FR_2026_Desktop_01_ctrl"
+tracking = "wpde-01-261026-ctrl"
+
+[wpde_desktop.banners.var]
+filename = "./banners/wpde_desktop/WPDE_FR_2026_Desktop_01/banner_var.ts"
+pagename = "WPDE_FR_2026_Desktop_01_var"
+tracking = "wpde-01-261026-var"
+
+
+[wpde_mobile]
+name = "WPDE Mobile"
+icon = "mobile"
+campaign = "WPDE_FR_2026_Mobile_01"
+description = "CTRL is based on the control banner of last year's mobile-wpde-01; VAR is based on CTRL of this year's mobile-de-07"
+campaign_tracking = "wpde-mob01-261026"
+preview_link = "/wikipedia.de?devbanner={{banner}}&banner=dev-mode-wpde"
+preview_link_darkmode = "/wikipedia.de?devbanner={{banner}}&banner=dev-mode-wpde"
+preview_link_offline = "/wpde-offline?devbanner={{banner}}&banner=dev-mode-wpde"
+wrapper_template = "wikipedia_de"
+wrap_in_wikitext = false
+preview_url = 'https://www.wikipedia.de/?banner={{banner}}'
+
+[wpde_mobile.banners.ctrl]
+filename = "./banners/wpde_mobile/WPDE_FR_2026_Mobile_01/banner_ctrl.ts"
+pagename = "WPDE_FR_2026_Mobile_01_ctrl"
+tracking = "wpde-mob01-261026-ctrl"
+
+[wpde_mobile.banners.var]
+filename = "./banners/wpde_mobile/WPDE_FR_2026_Mobile_01/banner_var.ts"
+pagename = "WPDE_FR_2026_Mobile_01_var"
+tracking = "wpde-mob01-261026-var"
+
+
+
+[english]
+name = "English Desktop"
+icon = "desktop"
+campaign = "WMDE_FR_2026_Desktop_EN_02"
+description = "Based on CTRL of desktop en 01"
+campaign_tracking = "en02-ba-261026"
+preview_link = "/wiki/Main_Page?devbanner={{banner}}&banner=B26_WMDE_local_prototype"
+preview_link_darkmode = "/wiki/Main_Page?devbanner={{banner}}&banner=B26_WMDE_local_prototype&vectornightmode=1"
+preview_link_offline = ""
+preview_url = 'https://en.wikipedia.org/wiki/Main_Page?banner={{banner}}&devMode'
+preview_url_darkmode = 'https://en.wikipedia.org/wiki/Main_Page?banner={{banner}}&devMode&vectornightmode=1'
+wrapper_template = "wikipedia_org"
+use_of_funds_source = "MediaWiki:WMDE_Fundraising/UseOfFunds_2026_EN"
+
+[english.banners.ctrl]
+filename = "./banners/english/WMDE_FR_2026_Desktop_EN_02/banner_ctrl.ts"
+pagename = "WMDE_FR_2026_Desktop_EN_02_ctrl"
+tracking = "org-en02-261026-ctrl"
+
+[english.banners.var]
+filename = "./banners/english/WMDE_FR_2026_Desktop_EN_02/banner_var.ts"
+pagename = "WMDE_FR_2026_Desktop_EN_02_var"
+tracking = "org-en02-261026-var"
+
+[english.test_matrix]
+platform = ["edge", "firefox_windows", "chrome_windows", "firefox_linux", "chrome_linux", "chrome_macos", "firefox_macos", "safari" ]
+resolution = ["800x600", "1280x720", "1536x864", "1920x1080", "2560x1440"]
+
+
+
+[mobile_english]
+name = "English Mobile"
+icon = "mobile"
+campaign = "WMDE_FR_2026_Mobile_EN_01"
+description = "CTRL based on CTRL of WMDE_FR_2025_Mobile_EN_02, VAR based on CTRL of WMDE_FR_2026_Mobile_DE_06 (i.e. compare old EN to new DE)"
+campaign_tracking = "mob_en01-ba-261026"
+preview_link = "/wiki/Main_Page?devbanner={{banner}}&useskin=minerva&banner=B26_WMDE_local_prototype"
+preview_link_darkmode = "/wiki/Main_Page?devbanner={{banner}}&useskin=minerva&banner=B26_WMDE_local_prototype&minervanightmode=1"
+preview_link_offline = ""
+preview_url = 'https://en.m.wikipedia.org/wiki/Main_Page?banner={{banner}}&devMode&useskin=minerva'
+preview_url_darkmode = 'https://en.m.wikipedia.org/wiki/Main_Page?banner={{banner}}&devMode&useskin=minerva&minervanightmode=1'
+wrapper_template = "wikipedia_org"
+use_of_funds_source = "MediaWiki:WMDE_Fundraising/UseOfFunds_2026_EN"
+
+[mobile_english.banners.ctrl]
+filename = "./banners/mobile_english/WMDE_FR_2026_Mobile_EN_01/banner_ctrl.ts"
+pagename = "WMDE_FR_2026_Mobile_EN_01_ctrl"
+tracking = "org-mob_en01-261026-ctrl"
+
+[mobile_english.banners.var]
+filename = "./banners/mobile_english/WMDE_FR_2026_Mobile_EN_01/banner_var.ts"
+pagename = "WMDE_FR_2026_Mobile_EN_01_var"
+tracking = "org-mob_en01-261026-var"
+
+[mobile_english.test_matrix]
+device = [ "android_old_chrome", "android_new_chrome", "iphone_old", "iphone_small", "iphone_new" ]
+orientation = [ "portrait", "landscape" ]
+
+
+
+[fallback]
+name = "Fallback Banner"
+icon = "desktop"
+campaign = "WMDE_FR_2026_Fallback_00"
+description = "Based on the fallback banner in the 24 campaign"
+campaign_tracking = "fbb00-ba-260000"
+preview_link = "/wiki/Main_Page?devbanner={{banner}}&banner=B25_WMDE_local_prototype"
+preview_link_darkmode = "/wiki/Main_Page?devbanner={{banner}}&banner=B25_WMDE_local_prototype&vectornightmode=1"
+preview_link_offline = ""
+preview_url = 'https://de.wikipedia.org/wiki/Hamster?banner={{banner}}&devMode'
+preview_url_darkmode = 'https://de.wikipedia.org/wiki/Hamster?banner={{banner}}&devMode&vectornightmode=1'
+wrapper_template = "wikipedia_org"
+use_of_funds_source = "MediaWiki:WMDE_Fundraising/UseOfFunds_2026_EN"
+
+[fallback.banners.ctrl]
+filename = "./banners/fallback/WMDE_FR_2026_Fallback_00/banner_ctrl.ts"
+pagename = "WMDE_FR_2026_Fallback_00_ctrl"
+tracking = "org-fbb00-260000-ctrl"
+
+[fallback.banners.var]
+filename = "./banners/fallback/WMDE_FR_2026_Fallback_00/banner_ctrl.ts"
+pagename = "WMDE_FR_2026_Fallback_00_var"
+tracking = "org-fbb00-260000-ctrl"
+
+[fallback.test_matrix]
+platform = ["edge", "firefox_windows", "chrome_windows", "firefox_linux", "chrome_linux", "chrome_macos", "firefox_macos", "safari" ]
+resolution = ["800x600", "1280x720", "1536x864", "1920x1080", "2560x1440"]
+
+[photo_banner_feature]
+name = "Photo Banner"
+icon = "mobile"
+campaign = "WMDE_FR_2026_photo_banner_00"
+description = "This is a feature banner for the new photo banner"
+campaign_tracking = "photobanner00-ba-261116"
+preview_link = "/wiki/Wikipedia:Hauptseite?devbanner={{banner}}&banner=B26_WMDE_local_prototype&useskin=minerva"
+preview_link_darkmode = "/wiki/Wikipedia:Hauptseite?devbanner={{banner}}&banner=B26_WMDE_local_prototype&useskin=minerva&minervanightmode=1"
+preview_link_offline = ""
+preview_url = 'https://de.m.wikipedia.org/wiki/Wikipedia:Hauptseite?banner={{banner}}&useskin=minerva&devMode'
+preview_url_darkmode = 'https://de.m.wikipedia.org/wiki/Wikipedia:Hauptseite?banner={{banner}}&useskin=minerva&devMode&minervanightmode=1'
+wrapper_template = "wikipedia_org"
+use_of_funds_source = "MediaWiki:WMDE_Fundraising/UseOfFunds_2026_DE"
+
+[photo_banner_feature.banners.ctrl]
+filename = "./banners/features/WMDE_FR_2026_photo_banner_00/banner_ctrl.ts"
+pagename = "WMDE_FR_2026_photo_banner_00_ctrl"
+tracking = "org-photobanner00-261116-ctrl"
+
+[photo_banner_feature.banners.var]
+filename = "./banners/features/WMDE_FR_2026_photo_banner_00/banner_var.ts"
+pagename = "WMDE_FR_2026_photo_banner_00_var"
+tracking = "org-photobanner00-261116-var"
+
+[photo_banner_feature.test_matrix]
+device = [ "android_old_chrome", "android_new_chrome", "iphone_old", "iphone_small", "iphone_new" ]
+orientation = [ "portrait", "landscape"]

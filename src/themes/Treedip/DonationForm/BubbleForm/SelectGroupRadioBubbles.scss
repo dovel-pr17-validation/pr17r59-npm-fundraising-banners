@@ -1,0 +1,50 @@
+@use '../../variables/breakpoints';
+@use 'radio-input';
+
+$height: 23px !default;
+
+$margin-left: -6px;
+$border-radius: 8px;
+$font-size: 1.01em !default;
+$padding: 0 0 0 3px;
+$check-size: 10px;
+
+.wmde-banner {
+	&-select-group {
+		margin: 0 -4px;
+
+		&-option {
+			padding: 0 4px;
+			margin-bottom: 8px;
+
+			label {
+				scale: 1;
+				display: flex;
+				align-items: center;
+				padding: 0 10px 0 25px;
+				cursor: pointer;
+				height: $height;
+				background: var( --select-group-bubble-background );
+				border: 1px solid var( --select-group-bubble-border );
+				border-radius: $border-radius;
+			}
+
+			&.active label {
+				background: var( --select-group-bubble-background-active );
+				border: 2px solid var( --select-group-bubble-border-active );
+			}
+		}
+
+		&-label {
+			color: var( --select-group-bubble-color );
+			border: 0 none;
+			font-size: $font-size;
+			margin-left: $margin-left;
+			padding: $padding;
+		}
+
+		&-input {
+			@include radio-input.styles;
+		}
+	}
+}

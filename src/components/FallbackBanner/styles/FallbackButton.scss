@@ -1,0 +1,27 @@
+@use 'src/themes/Treedip/variables/globals';
+
+.wmde-fbb {
+	&-button {
+		width: 300px;
+		background: var( --fallback-button-background );
+		color: var( --fallback-button-color );
+		font-weight: bold;
+		line-height: 36px;
+		border: 0;
+		border-radius: 18px;
+		padding: 0 10px;
+		transition: background-color 500ms globals.$banner-easing;
+		cursor: pointer;
+
+		&:hover,
+		&:focus {
+			background: var( --fallback-button-background-hover );
+		}
+	}
+
+	&-small {
+		.wmde-fbb-button {
+			margin-bottom: 8px;
+		}
+	}
+}

@@ -1,0 +1,27 @@
+.wmde-b-callout {
+	--border-color: var( --color-callout-border );
+	--background-color: var( --color-callout-background );
+	--color: var( --color-callout );
+
+	background: var( --background-color );
+	padding: var( --space-2xs );
+	border: 2px solid var( --border-color );
+	text-align: center;
+	color: var( --color );
+	font-weight: var( --font-bold );
+}
+
+.wmde-b-callout[ data-error ] {
+	--color-callout-border: var( --color-callout-error-border );
+	--color-callout-background: var( --color-callout-error-background );
+	--color-callout: var( --color-callout-error );
+}
+
+.wmde-b-callout[ data-radius ] {
+	border-radius: var( --space-2xs );
+}
+
+.wmde-b-callout:focus,
+.wmde-b-callout:focus-visible {
+	--background-color: oklch( from var( --color-callout-border ) calc( l/2 + 0.8 ) c h );
+}

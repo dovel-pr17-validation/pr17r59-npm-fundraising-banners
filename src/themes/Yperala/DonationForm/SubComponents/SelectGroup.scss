@@ -1,0 +1,100 @@
+@use 'src/components/DonationForm/SubComponents/SelectGroup';
+@use '../../variables/globals';
+@use '../../variables/breakpoints';
+
+.wmde-banner {
+	@include SelectGroup.layout;
+
+	&-select-group {
+		flex-wrap: wrap;
+		justify-content: space-between;
+
+		&-label {
+			width: 100%;
+			font-family: inherit;
+			font-size: 18px;
+			font-weight: bold;
+			height: 46px;
+			line-height: 46px;
+			padding: 0 2px;
+			margin-bottom: 10px;
+			color: var( --select-group-option-color );
+			background-color: var( --select-group-option-background );
+			border-radius: globals.$form-element-border-radius;
+		}
+
+		&-input:checked + .wmde-banner-select-group-label {
+			background-color: var( --select-group-option-background-active );
+			color: var( --select-group-option-color-active );
+		}
+
+		&-error-message {
+			line-height: 16px;
+			font-weight: bold;
+			text-align: center;
+			margin-bottom: 0.2em;
+			font-size: 0.8em;
+		}
+
+		&-container {
+			overflow: hidden;
+		}
+
+		&-container--with-error {
+			.wmde-banner-select-group-error-message {
+				color: var( --color-error );
+			}
+		}
+	}
+
+	&-disabled {
+		.wmde-banner-select-group-label {
+			color: var( --select-group-option-color-disabled );
+		}
+	}
+
+	.wmde-banner-select-group-container.select-interval .wmde-banner-select-group {
+		flex-wrap: wrap;
+		.wmde-banner-select-group-option {
+			width: 31%;
+			flex: 0 1 31%;
+		}
+	}
+
+	.wmde-banner-select-group-container.select-amount .wmde-banner-select-group {
+		flex-wrap: wrap;
+		.wmde-banner-select-group-option {
+			width: 49%;
+			flex: 0 1 49%;
+
+			@include breakpoints.phone-s-up {
+				width: 31%;
+				flex: 0 1 31%;
+			}
+		}
+	}
+
+	.wmde-banner-select-group-container.select-payment-method .wmde-banner-select-group {
+		flex-wrap: wrap;
+		.wmde-banner-select-group-label {
+			line-height: 70px;
+		}
+		.wmde-banner-select-group-option {
+			width: 49%;
+			flex: 0 1 49%;
+
+			&.payment-sub {
+				flex: 1 1 100%;
+				width: 100%;
+			}
+		}
+	}
+
+	.wmde-banner-select-group-container.select-address-option .wmde-banner-select-group {
+		flex-wrap: wrap;
+		.wmde-banner-select-group-option {
+			flex: 1 1 auto;
+			width: 100%;
+		}
+	}
+}

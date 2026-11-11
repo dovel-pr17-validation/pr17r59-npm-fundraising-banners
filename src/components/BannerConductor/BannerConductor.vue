@@ -1,0 +1,129 @@
+<template>
+	<div
+		ref="bannerRef"
+		class="wmde-banner"
+		:lang="$translate( 'lang' )"
+		:class="[ { 't-banner-visible': bannerState.stateName === BannerStates.Visible }, bannerState.stateName ]"
+		role="region"
+		:aria-label="$translate( 'banner-label' )"
+		:aria-hidden="bannerState.stateName !== BannerStates.Visible"
+	>
+		<component
+			:is="banner"
+			v-bind="bannerProps"
+			:bannerState="bannerState.stateName"
+			@banner-closed="closeHandler"
+			@banner-submitted="submittedHandler"
+			@banner-content-changed="onContentChanged"
+			@modal-opened="page.setModalOpened"
+			@modal-closed="page.setModalClosed"
+		/>
+		<div class="visually-hidden" aria-live="assertive"><template v-if="bannerState.stateName === BannerStates.Visible">{{ $translate( 'live-text' ) }}</template></div>
+	</div>
+</template>
+
+<script setup lang="ts">
+
+import type { Page } from '@src/page/Page';
+import { inject, nextTick, onMounted, ref } from 'vue';
+import type { BannerConfig } from '@src/domain/BannerConfig';
+import type { ResizeHandler } from '@src/utils/ResizeHandler';
+import { newStateFactory } from '@src/components/BannerConductor/StateMachine/states/StateFactory';
+import { newBannerStateMachine } from '@src/components/BannerConductor/StateMachine/BannerStateMachine';
+import type { BannerState } from '@src/components/BannerConductor/StateMachine/states/BannerState';
+import { Vector2 } from '@src/utils/Vector2';
+import type { ImpressionCount } from '@src/utils/ImpressionCount';
+import type { Tracker } from '@src/tracking/Tracker';
+import type { TrackingEvent } from '@src/tracking/TrackingEvent';
+import { CloseEvent } from '@src/tracking/events/CloseEvent';
+import { BannerStates } from '@src/components/BannerConductor/StateMachine/BannerStates';
+import type { Timer } from '@src/utils/Timer';
+import type { BannerCategory } from '@src/components/BannerConductor/BannerCategory';
+import type { Translator } from '@src/Translator';
+
+interface Props {
+	page: Page,
+	bannerConfig: BannerConfig,
+	resizeHandler: ResizeHandler,
+	banner: object,
+	bannerProps?: object,
+	impressionCount: ImpressionCount,
+	bannerCategory: BannerCategory,
+	showDonateLinkTooltip?: boolean
+}
+
+const props = withDefaults( defineProps<Props>(), {
+	bannerProps: (): any => ( {} ),
+	showDonateLinkTooltip: () => false
+} );
+const tracker = inject<Tracker>( 'tracker' );
+const timer = inject<Timer>( 'timer' );
+const translator = inject<Translator>( 'translator' );
+
+const bannerRef = ref( null );
+const stateFactory = newStateFactory( props.bannerConfig, props.page, tracker, props.resizeHandler, props.impressionCount, timer, props.bannerCategory );
+const bannerState = ref<BannerState>( stateFactory.newInitialState() );
+const stateMachine = newBannerStateMachine( bannerState );
+const popupMessages = {
+	linkMessage: `<p>${ translator.translate( 'donate-link-tooltip' ) }</p>`,
+	menuMessage: `<p>${ translator.translate( 'donate-menu-tooltip' ) }</p>`,
+};
+
+onMounted( async () => {
+	// Wait a tick to give subcomponents time to render and hopefully reduce size issues
+	await nextTick();
+
+	await stateMachine.changeState( stateFactory.newPendingState( bannerRef.value.offsetHeight ) );
+	const bannerNotShownReason = props.page.getReasonToNotShowBanner( new Vector2( bannerRef.value.offsetWidth, bannerRef.value.offsetHeight ) );
+
+	if ( bannerNotShownReason ) {
+		await stateMachine.changeState( stateFactory.newNotShownState( bannerNotShownReason, bannerRef.value.offsetHeight ) );
+	} else {
+		await stateMachine.changeState( stateFactory.newShowingState() );
+		await stateMachine.changeState( stateFactory.newVisibleState( 'Page' ) );
+	}
+} );
+
+props.resizeHandler.onResize( () => stateMachine.currentState.value.onResize( bannerRef.value.offsetHeight ) );
+props.page.onPageEventThatShouldHideBanner( async () => {
+	await stateMachine.changeState( stateFactory.newClosedState( new CloseEvent( 'Page', 'page-interaction' ) ) );
+	if ( props.showDonateLinkTooltip ) {
+		await stateMachine.changeState( stateFactory.newDonateLinkPopupState( popupMessages ) );
+	}
+} );
+
+function onContentChanged(): void {
+	// Wait a tick in order to let the content re-render before updating the size
+	nextTick( () => {
+		stateMachine.currentState.value.onContentChanged( bannerRef.value.offsetHeight );
+	} );
+}
+
+async function closeHandler( closeEvent: TrackingEvent<void> ): Promise<any> {
+	await stateMachine.changeState( stateFactory.newClosedState( closeEvent ) );
+	if ( props.showDonateLinkTooltip ) {
+		await stateMachine.changeState( stateFactory.newDonateLinkPopupState( popupMessages ) );
+	}
+}
+
+async function submittedHandler(): Promise<any> {
+	await stateMachine.changeState( stateFactory.newSubmittedState() );
+}
+
+</script>
+
+<style lang="scss">
+/* stylelint-disable selector-id-pattern */
+#wmde-banner-app,
+#WMDE-Banner-Container {
+	position: fixed;
+	width: 100%;
+	z-index: 1000;
+}
+.wmde-banner--not-shown,
+.wmde-banner--closed,
+.wmde-banner--submitted,
+.wmde-banner--donate-link-popup {
+	display: none;
+}
+</style>

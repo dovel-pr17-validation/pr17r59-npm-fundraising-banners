@@ -1,0 +1,56 @@
+@use '@src/themes/Yperala/variables/breakpoints';
+
+.wmde-banner {
+	&-select-group-label {
+		svg {
+			width: auto;
+			padding: 0 5px;
+		}
+		&.with-logos {
+			display: flex;
+			justify-content: center;
+		}
+
+		.paypal-logo {
+			max-width: 118px;
+		}
+
+		&.credit-cards {
+			svg {
+				padding: 12px 10px;
+			}
+		}
+
+		.mastercard-logo {
+			transform: scale( 1.5 );
+		}
+	}
+
+	&-select-group-input:checked + .wmde-banner-select-group-label.with-logos {
+		.paypal-logo {
+			--paypal-primary-fill: var( --paypal-primary-fill-active );
+			--paypal-secondary-fill: var( --paypal-secondary-fill-active );
+			--paypal-overlap-fill: var( --paypal-overlap-fill-active );
+		}
+
+		.visa-logo {
+			--visa-fill: var( --visa-fill-active );
+		}
+
+		.mastercard-logo {
+			--mastercard-primary-fill: var( --mastercard-primary-fill-active );
+			--mastercard-secondary-fill: var( --mastercard-secondary-fill-active );
+			--mastercard-overlap-fill: var( --mastercard-overlap-fill-active );
+			--mastercard-text-fill: var( --mastercard-text-fill-active );
+		}
+
+		.sepa-logo {
+			--sepa-primary-fill: var( --sepa-primary-fill-active );
+			--sepa-secondary-fill: var( --sepa-secondary-fill-active );
+		}
+
+		.bank-transfer-logo {
+			--bank-transfer-fill: var( --bank-transfer-fill-active );
+		}
+	}
+}
